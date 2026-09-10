@@ -16,4 +16,11 @@ app.use(express.urlencoded({ extended: true, limit: "15kb" })) // middleware con
 app.use(express.static("public"))                // for serving static files like images, files etc
 
 app.use(cookieParser())
+
+
+// routes import
+import userRouter from "./routes/user.routes.js"
+
+// routes declaration
+app.use("/api/v1/users", userRouter)
 export {app}

@@ -83,11 +83,11 @@ userSchema.methods.generateRefreshToken = function ()
 {
     return jwt.sign(
         {
-            _id : this.id
+            _id : this.id                                  // payload
         },
-        process.env.REFRESH_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_SECRET,                 // secret key
         {
-           expiresIn : process.env.REFRESH_TOKEN_EXPIRY
+           expiresIn : process.env.REFRESH_TOKEN_EXPIRY  // options 
         }
     )
 }
