@@ -1,6 +1,8 @@
 import dotenv from "dotenv"
 import dbConnection from "./db/connection.js"
 import dns from "node:dns"
+import { app } from "./app.js"
+
 
 dns.setServers([
   "8.8.8.8",
@@ -13,7 +15,17 @@ dotenv.config({
 
 
 dbConnection()
-
+.then(() => {
+    app.listen(process.env.PORT || 3000, () => {
+        console.log(`Server is running at PORT : ${process.env.PORT}`)
+    })
+    app.get("/", (req, res) => {
+        res.send(`connected to server at PORT : ${process.env.PORT}`)
+    })
+})
+.catch( (error) => {
+    console.log("mongodb Connection failed", error)
+})
 
 
 
