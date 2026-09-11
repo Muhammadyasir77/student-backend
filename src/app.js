@@ -13,7 +13,7 @@ app.use(express.json({                      // middleware configuration to parse
     limit: "15kb"
 }))
 app.use(express.urlencoded({ extended: true, limit: "15kb" })) // middleware configuration for data coming from URL
-app.use(express.static("public"))                // for serving static files like images, files etc
+app.use(express.static("student-backend/public"))                // for serving static files like images, files etc
 
 app.use(cookieParser())
 

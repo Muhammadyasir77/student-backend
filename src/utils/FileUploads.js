@@ -1,3 +1,4 @@
+import "dotenv/config"
 import {v2 as cloudinary} from 'cloudinary'
 import fs from "fs"
 
@@ -13,8 +14,8 @@ const uploadOnCloudinary = async (filePath) => {
         const response = await cloudinary.uploader.upload(filePath, {
                 resource_type : "auto"
         })
-
-        console.log("File uploaded successfully to Cloudinary : ", response.url)
+        
+        fs.unlinkSync(filePath)
         return response
         
     } catch(error) {
